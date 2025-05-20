@@ -2,7 +2,7 @@ from django.test import TestCase
 from rest_framework.test import APIClient
 from rest_framework import status
 
-class CalculatorAPITest(TestCase):
+class TestCalculatorAPI(TestCase):
     def setUp(self):
         self.client = APIClient()
         self.url = '/api/calculate/'
