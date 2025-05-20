@@ -41,3 +41,12 @@ class TestCalculatorAPI(TestCase):
         response = self.client.post(self.url, {'a': 10}, format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertIn('error', response.data)
+
+    def test_invalid_input_types(self):
+        response = self.client.post(
+            self.url,
+            {'a': 'five', 'b': 'three', 'operation': 'add'},
+            format='json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertIn('error', response.data)
